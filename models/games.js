@@ -10,9 +10,22 @@ module.exports = function(sequelize, DataTypes) {
         genres:{
             type: DataTypes.STRING
         },
+        platforms:{
+            type: DataTypes.STRING
+        },
         inventory:{
             type: DataTypes.INTEGER
         }
     });
+
+    //to link reviews
+    // Author.associate = function(models) {
+    //     // Associating Author with Posts
+    //     // When an Author is deleted, also delete any associated Posts
+    //     Author.hasMany(models.Post, {
+    //       onDelete: "cascade"
+    //     });
+    //   };
+
     return Game;
 };

@@ -2,7 +2,7 @@
 const db = require("../models");
 
 module.exports = function(app) {
-
+    //GAMES ROUTES
     app.get("/api/all-games", (req, res) => {
         db.Game.findAll({}).then(function(result){
             res.json(result);
@@ -21,6 +21,19 @@ module.exports = function(app) {
         });
     });
 
+    app.get("/api/:platform", (req, res) => {
+        db.Game.findAll({
+            where:{
+                platforms: {
+                    [like]: `%${req.params.platform}`
+                }
+            }
+        }).then(function(result){
+            res.json(result);
+        });
+    });
+
+    //REVIEW ROUTES
     app.post("/api/", (req, res) => {
 
     });
