@@ -1,8 +1,6 @@
-
-
 module.exports = function(app) {
-    app.get("/", function(req, res){
-        res.render("filetoname");
-    });
+  app.get("/", (req, res) => {
+    res.render('filetoname')
+  });
 
 };
