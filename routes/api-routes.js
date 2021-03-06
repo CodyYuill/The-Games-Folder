@@ -24,7 +24,7 @@ module.exports = function(app) {
     app.get("/api/:platform", (req, res) => {
         db.Game.findAll({
             where:{
-                platforms: {
+                platform_slug: {
                     [like]: `%${req.params.platform}`
                 }
             }

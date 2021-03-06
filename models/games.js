@@ -4,13 +4,19 @@ module.exports = function(sequelize, DataTypes) {
         name:{
             type: DataTypes.STRING
         },
-        slug:{
+        game_slug:{
+            type: DataTypes.STRING
+        },
+        platforms:{
+            type: DataTypes.STRING
+        },
+        platform_slug:{
             type: DataTypes.STRING
         },
         genres:{
             type: DataTypes.STRING
         },
-        platforms:{
+        genre_slug:{
             type: DataTypes.STRING
         },
         inventory:{
