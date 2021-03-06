@@ -1,5 +1,8 @@
 
 const db = require("../models");
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
+
 
 module.exports = function(app) {
     //GAMES ROUTES
@@ -9,10 +12,10 @@ module.exports = function(app) {
         });
     });
 
-    app.get("/api/:game", (req, res) => {
+    app.get("/api/games/:game", (req, res) => {
         db.Game.findOne({
             where:{
-                slug: req.params.game
+                game_slug: req.params.game
             }
             //include: [db.reviews] if we get there
         }).then(function(result){
@@ -21,11 +24,23 @@ module.exports = function(app) {
         });
     });
 
-    app.get("/api/:platform", (req, res) => {
+    app.get("/api/platforms/:platform", (req, res) => {
         db.Game.findAll({
             where:{
                 platform_slug: {
-                    [like]: `%${req.params.platform}`
+                    [Op.like]: `%${req.params.platform}`
+                }
+            }
+        }).then(function(result){
+            res.json(result);
+        });
+    });
+
+    app.get("/api/genres/:genre", (req, res) => {
+        db.Game.findAll({
+            where:{
+                genre_slug: {
+                    [Op.like]: `%${req.params.genre}`
                 }
             }
         }).then(function(result){
