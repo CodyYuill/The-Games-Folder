@@ -12,6 +12,7 @@ module.exports = function (app) {
     });
 
     app.post("/api/signup", (req, res) => {
+        console.log(req.body);
         db.User.create({
             email: req.body.email,
             password: req.body.password,
@@ -22,8 +23,9 @@ module.exports = function (app) {
             })
             .catch(function (err) {
                 res.status(401).json(err);
+                //console.log(err);
             });
-        //console.log(req.body);
-        //res.json(req.body);
+        // console.log(req.body);
+        // res.json(req.body);
     });
 };
