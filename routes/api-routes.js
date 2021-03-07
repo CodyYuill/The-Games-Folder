@@ -50,6 +50,8 @@ module.exports = function(app) {
 
     //REVIEW ROUTES
     app.post("/api/add-review", (req, res) => {
-        // db.Review.
+        db.Review.create(req.body).then(function(result){
+            res.json(result);
+        });
     });
 };
