@@ -25,13 +25,13 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     //to link reviews
-    // Author.associate = function(models) {
-    //     // Associating Author with Posts
-    //     // When an Author is deleted, also delete any associated Posts
-    //     Author.hasMany(models.Post, {
-    //       onDelete: "cascade"
-    //     });
-    //   };
+    Game.associate = function(models) {
+        // Associating Review with Posts
+        // When an Review is deleted, also delete any associated Posts
+        Game.hasMany(models.Review, {
+            onDelete: "cascade"
+        });
+    };
 
     return Game;
 };

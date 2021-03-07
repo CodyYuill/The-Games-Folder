@@ -1,0 +1,17 @@
+language: node_js
+node_js: "14.15.5"
+branches:
+  only:
+    - master
+    - main
+cache:
+  directories:
+    - node_modules
+services:
+  - mysql
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS gamefolder_db;'
+install:
+- npm install
+script:
+- npm test
