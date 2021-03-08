@@ -16,8 +16,8 @@ module.exports = function(app) {
         db.Game.findOne({
             where:{
                 game_slug: req.params.game
-            }
-            //include: [db.reviews] if we get there
+            },
+            include: [db.Review]
         }).then(function(result){
             //grab rest of info thats we arent storing in the database from RAWG
             res.json(result);
@@ -49,7 +49,9 @@ module.exports = function(app) {
     });
 
     //REVIEW ROUTES
-    app.post("/api/", (req, res) => {
-
+    app.post("/api/add-review", (req, res) => {
+        db.Review.create(req.body).then(function(result){
+            res.json(result);
+        });
     });
 };
