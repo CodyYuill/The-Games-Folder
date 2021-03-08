@@ -14,7 +14,7 @@ let gameImg = document.getElementById('gameImg');
 // API url 
 let url = "wwww.gamesdgsdgsg.com/api/" + consoleSearch + "/" + gameSearch
 
-searchBtn.addEventListener(click, searchGame;
+searchBtn.addEventListener(click, searchGame);
 
 function searchName () {
     
