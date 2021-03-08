@@ -10,8 +10,8 @@ cache:
     - node_modules
 services:
   - mysql
-before_install:
-  - mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS gamefolder_db;"
+# before_install:
+#   - mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS gamefolder_db;"
 install:
 - npm install
 script:
