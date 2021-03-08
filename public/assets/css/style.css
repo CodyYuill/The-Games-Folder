@@ -13,12 +13,12 @@
     border-radius: 36px;
     background: #fee996;
 }
-.form h2 {
+.signup h2 {
     font-size: 2.4em;
     font-weight: 900;
     margin-bottom: 40px;
 }
-.form {
+.signup {
     width: 360px;
     margin: 0 auto;
     padding: 30px;

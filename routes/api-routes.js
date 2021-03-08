@@ -1,4 +1,5 @@
 const db = require("../models");
+const jwt = require("jsonwebtoken")
 
 const handlerrors = (err) =>{
     console.log(err.message,err.code);
@@ -24,6 +25,13 @@ const handlerrors = (err) =>{
     return error;
 }
 
+var maxAge = 3 * 24 * 60 * 60;
+const createToken = (id) => {
+    return jwt.sign({ id }, "gamekeytogame",{
+        expiresIn: maxAge
+    })
+}
+
 module.exports = function (app) {
     app.post("/api/", (req, res) => {});
 
@@ -43,6 +51,8 @@ module.exports = function (app) {
         })
             .then(function (response) {
                // res.redirect(307, "/api/login");
+               const token = createToken(response.id);
+               res.cookie("jwt",token, {httpOnly: true, maxAge: maxAge * 1000});
                res.status(201).json(response);
             })
             .catch(function (err) {
