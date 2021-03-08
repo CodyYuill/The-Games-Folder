@@ -1,20 +1,160 @@
-  
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<!-- CSS only -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-		<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
-		<title>The Games Folder</title>
-
-		
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/css/mdb.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+	<title>The Games Folder</title>
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+		crossorigin="anonymous"></script>
 </head>
-	<body>
-		{{{ body }}}
-		<script src="https://code.jquery.com/jquery.js"></script>
-		<script src="/assets/js/logic.js"></script>
-		<!-- JavaScript Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-	</body>
+<header>
+	<div class="container">
+		<div class="row">
+			<div class="col"><img class="resize center"
+					src="https://raw.githubusercontent.com/Michaelwall8/first-repository/main/logo.jpg" alt=""> </div>
+
+		</div>
+		<div class="row">
+			<div class="col">
+				<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container-fluid">
+
+						<a class="navbar-brand position-absolute top-50 start-50 translate-middle" href="#"><h2>Gaming Review Hub</h2></a>
+						<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+							data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+							aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+							</ul>
+							<form class="d-flex">
+
+								<button class="btn btn-danger" type="submit">Login/signin</button>
+							</form>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<div class="row">
+				<div class="col">
+					<nav class="navbar navbar-expand-lg navbar-light bg-light">
+						<div class="container-fluid">
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+								data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+								aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<div class="collapse navbar-collapse position-absolute top-50 start-50 translate-middle"
+								id="navbarSupportedContent">
+								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+										{{!-- <div class="btn-group">
+										<button class="btn btn-secondary btn-lg dropdown-toggle" type="button"
+											data-bs-toggle="dropdown" aria-expanded="false">
+											Large button --}}
+										{{!-- </button> --}}
+									<li class="nav-item">
+										<a class="nav-link active" aria-current="page" href="#">All Games</a>
+									</li>
+
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+											data-bs-toggle="dropdown" aria-expanded="false">
+											Consoles
+										</a>
+										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<li><a class="dropdown-item" href="#">Action</a></li>
+											<li><a class="dropdown-item" href="#">Another action</a></li>
+											<li>
+												<hr class="dropdown-divider">
+											</li>
+											<li><a class="dropdown-item" href="#">Something else here</a></li>
+										</ul>
+									</li>
+
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+											data-bs-toggle="dropdown" aria-expanded="false">
+											Genres
+										</a>
+										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<li><a class="dropdown-item" href="#">Action</a></li>
+											<li><a class="dropdown-item" href="#">Another action</a></li>
+											<li>
+												<hr class="dropdown-divider">
+											</li>
+											<li><a class="dropdown-item" href="#">Something else here</a></li>
+										</ul>
+									</li>
+									<li class="nav-item dropdown">
+										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+											data-bs-toggle="dropdown" aria-expanded="false">
+											Dropdown
+										</a>
+										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<li><a class="dropdown-item" href="#">Action</a></li>
+											<li><a class="dropdown-item" href="#">Another action</a></li>
+											<li>
+												<hr class="dropdown-divider">
+											</li>
+											<li><a class="dropdown-item" href="#">Something else here</a></li>
+										</ul>
+									</li>
+									{{!-- <div class="btn-group">
+										<button class="btn btn-secondary btn-lg dropdown-toggle" type="button"
+											data-bs-toggle="dropdown" aria-expanded="false">
+											Large button
+										</button> --}}
+										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<li><a class="dropdown-item" href="#">Action</a></li>
+											<li><a class="dropdown-item" href="#">Another action</a></li>
+											<li>
+												<hr class="dropdown-divider">
+											</li>
+											<li><a class="dropdown-item" href="#">Something else here</a></li>
+										</ul>
+								</ul>
+
+								</ul>
+							</div>
+						</div>
+					</nav>
+
+				</div>
+			</div>
+		</div>
+
+</header>
+
+<body>
+
+
+	{{{ body }}}
+
+	{{!-- <p>body</p> --}}
+</body>
+
+{{!-- <footer>
+	<p>test</p>
+	<div class="footer-content"> </div> --}}
+
+
+	<script src="/assets/js/logic.js"></script>
+	<!-- JavaScript Bundle with Popper -->
+	</div>
+	{{!-- <div class="footer-bottom">
+		<p>copyright</p>
+	</div> --}}
+
+	{{!--
+</footer> --}}
+
+
 </html>

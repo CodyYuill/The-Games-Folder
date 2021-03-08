@@ -8,3 +8,11 @@
     margin-right: auto;
     width: 50%;
   }
+
+img.resize {
+    width: 400px;
+    height:160px; 
+}
+
+
+

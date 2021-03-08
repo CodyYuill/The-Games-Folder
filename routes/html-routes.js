@@ -5,4 +5,8 @@ module.exports = function(app) {
     res.render('filetoname')
   });
 
+  app.get("/product", (req, res) => {
+    res.render('product')
+  });
+
 };
