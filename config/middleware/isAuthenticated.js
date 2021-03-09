@@ -10,7 +10,7 @@ const requireAuth = (req, res, next) => {
     if (token) {
         jwt.verify(token, "gamekeytogame", (err, decodedToken) => {
             if (err) {
-                console.log(err.message);
+                //console.log(err.message);
                 res.redirect("/login");
             } else {
                 console.log(decodedToken);
@@ -31,8 +31,9 @@ const checkUser = (req, res, next) => {
                 res.locals.user = null;
                 next();
             } else {
-                let user = await db.User.findByOne({ where: {id:decodedToken.id}});
+                let user = await db.User.findOne({ where: {id:decodedToken.id}});
                 res.locals.user = user;
+                //console.log(res.locals.user);
                 next();
             }
         });

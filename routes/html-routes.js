@@ -3,7 +3,7 @@ const { requireAuth, checkUser } = require("../config/middleware/isAuthenticated
 module.exports = function (app) {
 
     app.get("*", checkUser);
-    app.get("/", requireAuth,(req, res) => {
+    app.get("/", (req, res) => {
         res.render("filetoname");
     });
 
