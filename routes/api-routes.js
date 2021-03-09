@@ -1,6 +1,7 @@
 const db = require("../models");
 const jwt = require("jsonwebtoken");
 const Sequelize = require("sequelize");
+const axios = require("axios");
 const Op = Sequelize.Op;
 
 const handlerrors = (err) => {
@@ -98,12 +99,21 @@ module.exports = function(app) {
     app.get("/api/games/:game", (req, res) => {
         db.Game.findOne({
             where:{
-                game_slug: req.params.game
+                game_slug: {
+                    [Op.like]: `%${req.params.game}%`
+                }
             },
             include: [db.Review]
         }).then(function(result){
+            // console.log(result);
+            var ourData = result.dataValues;
             //grab rest of info thats we arent storing in the database from RAWG
-            res.json(result);
+            axios.get(`https://api.rawg.io/api/games/${ourData.game_slug}`).then(function(results2){
+                console.log("made call to RAWG for additional info");
+                //console.log(results2.data);
+                var theirData = results2.data;
+                res.render("product", {ourData, theirData});
+            });
         });
     });
 
@@ -111,7 +121,7 @@ module.exports = function(app) {
         db.Game.findAll({
             where:{
                 platform_slug: {
-                    [Op.like]: `%${req.params.platform}`
+                    [Op.like]: `%${req.params.platform}%`
                 }
             }
         }).then(function(result){
