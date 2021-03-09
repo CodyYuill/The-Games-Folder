@@ -1,14 +1,13 @@
 
 const db = require("../models");
 const Sequelize = require("sequelize");
+const axios = require("axios");
 const Op = Sequelize.Op;
 
 
 module.exports = function(app) {
 
-    app.get("/", (req, res) => {
-        res.render("homesearch");
-    });
+
     //GAMES ROUTES
     app.get("/api/all-games", (req, res) => {
         db.Game.findAll({}).then(function(result){
@@ -19,15 +18,21 @@ module.exports = function(app) {
     app.get("/api/games/:game", (req, res) => {
         db.Game.findOne({
             where:{
-                game_slug: req.params.game
+                game_slug: {
+                    [Op.like]: `%${req.params.game}%`
+                }
             },
             include: [db.Review]
         }).then(function(result){
-            console.log("hithitihihithithith");
-            console.log(result.dataValues);
-            var data = result.dataValues;
+            // console.log(result);
+            var ourData = result.dataValues;
             //grab rest of info thats we arent storing in the database from RAWG
-            res.render("product", {data});
+            axios.get(`https://api.rawg.io/api/games/${ourData.game_slug}`).then(function(results2){
+                console.log("made call to RAWG for additional info");
+                //console.log(results2.data);
+                var theirData = results2.data;
+                res.render("product", {ourData, theirData});
+            });
         });
     });
 

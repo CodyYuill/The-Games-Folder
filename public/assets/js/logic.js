@@ -1,13 +1,8 @@
 $(document).ready(() => {
-    // let searchBtn = document.getElementById("searchBtn");
     let searchBtn = $("#searchBtn");
 
     // search input field
-    // let gameSearch = document.getElementById("gameSearch");
     let gameSearch = $("#gameSearch");
-
-    // gameIMg
-    //let gameImg = document.getElementById("gameImg");
 
 
     searchBtn.on("click", function(){
@@ -18,7 +13,6 @@ $(document).ready(() => {
         });
 
     });
-    // searchBtn.addEventListener("click", searchGame);
 
 
 });

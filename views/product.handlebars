@@ -3,19 +3,19 @@
 
   <!--Section: Content-->
   <section class="text-center">
-      <h2 class="h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4">{{data.name}}</h2>
+      <h2 class="h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4">{{ourData.name}}</h2>
 
     <div class="row">
       <div class="col-lg-6">
-          <img id="gameImg" src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/1.jpg"
+          <img id="gameImg" src={{theirData.background_image}}
                 alt="First slide" class="img-fluid">
         
       </div>
 
       <div class="col-lg-5 text-center text-md-left">
 
-        <span class="badge badge-danger product mb-4 ml-xl-0 ml-4">tags</span>
-        <span class="badge badge-success product mb-4 ml-2">tags</span>
+        {{!-- <span class="badge badge-danger product mb-4 ml-xl-0 ml-4">tags</span>
+        <span class="badge badge-success product mb-4 ml-2">tags</span> --}}
 
         <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
           <span class="red-text font-weight-bold">
@@ -30,13 +30,18 @@
 
         <div class="font-weight-normal">
           
-          <p class="ml-xl-0 ml-4">GAME DESCRIPTION</p>
+          <p class="ml-xl-0 ml-4"></p>{{theirData.description_raw}}</p>
 
-          <p class="ml-xl-0 ml-4">{{data.platforms}}</p>
-          <p class="ml-xl-0 ml-4">{{data.genres}}</p>
-          <p class="ml-xl-0 ml-4">ESRB RATING</p>
+          <p class="ml-xl-0 ml-4">{{ourData.platforms}}</p>
+          <p class="ml-xl-0 ml-4">{{ourData.genres}}</p>
+          <p class="ml-xl-0 ml-4">ESRB Rating: {{theirData.esrb_rating.name}}</p>
           {{!-- if inventory > 0 disply in stock else display out of stock --}}
-          <p class="ml-xl-0 ml-4"><strong>Availability: </strong>In stock</p>          
+          {{!-- {{#if author}}
+<h1>{{firstName}} {{lastName}}</h1>
+{{else}}
+<h1>Unknown Author</h1>
+{{/if}} --}}
+          <p class="ml-xl-0 ml-4"><strong>Availability: </strong>{{#ifCond ourData.inventory '>' 0}}In stock</p>{{else}} Out of stock</p>{{/ifCond}}       
 
         </div>
 

@@ -1,8 +1,7 @@
 module.exports = function(app) {
+    app.get("/", (req, res) => {
+        res.render("homesearch");
+    });
 
-
-    // app.get("/product", (req, res) => {
-    //   res.render("product")
-    // });
 
 };
