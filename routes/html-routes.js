@@ -1,6 +1,4 @@
 const { requireAuth, checkUser } = require("../config/middleware/isAuthenticated.js");
-module.exports = function(app) {
-   
 
 module.exports = function (app) {
 

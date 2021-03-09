@@ -3,7 +3,6 @@ var express = require("express");
 const cookieParser = require("cookie-parser");
 
 var PORT = process.env.PORT || 8080;
-var db = require("./models");
 
 var app = express();
 

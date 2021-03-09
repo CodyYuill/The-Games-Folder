@@ -11,13 +11,13 @@
 // // gameIMg
 // let gameImg = document.getElementById("gameImg");
 
-// // API url 
+// // API url
 // let url = `wwww.gamesdgsdgsg.com/api/${consoleSearch}/${gameSearch}`;
 
 // searchBtn.addEventListener(click, searchGame);
 
 // function searchName () {
-    
+
 //     fetch(url)
 //         .then(function (result) {
 //             return result.json()
