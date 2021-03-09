@@ -1,34 +1,27 @@
-// $(document).ready(() => {
+$(document).ready(() => {
+    // let searchBtn = document.getElementById("searchBtn");
+    let searchBtn = $("#searchBtn");
+
+    // search input field
+    // let gameSearch = document.getElementById("gameSearch");
+    let gameSearch = $("#gameSearch");
+
+    // gameIMg
+    //let gameImg = document.getElementById("gameImg");
 
 
-// });
+    searchBtn.on("click", function(){
+        var gameToSearch = gameSearch.val();
+        fetch(`/api/games/${gameToSearch}`).then(function(result){
+            console.log(result);
+            window.location.href = result.url;
+        });
 
-// let searchBtn = document.getElementById("searchBtn");
+    });
+    // searchBtn.addEventListener("click", searchGame);
 
-// // search input field
-// let gameSearch = document.getElementById("gameSearch").value;
 
-// // gameIMg
-// let gameImg = document.getElementById("gameImg");
+});
 
-// // API url 
-// let url = `wwww.gamesdgsdgsg.com/api/${consoleSearch}/${gameSearch}`;
-
-// searchBtn.addEventListener(click, searchGame);
-
-// function searchName () {
-    
-//     fetch(url)
-//         .then(function (result) {
-//             return result.json()
-//     }).then(function (gameData) {
-
-//         let gameImgDB = JSON.stringify(gameData.image);
-
-//         gameImg.setAttribute("src", gameImgDB);
-
-//         document.getElementById("day1H").textContent;
-//     });
-// }
 
 
