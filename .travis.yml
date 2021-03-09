@@ -1,0 +1,18 @@
+language: node_js
+node_js: "14.15.5"
+os: windows
+branches:
+  only:
+    - master
+    - main
+cache:
+  directories:
+    - node_modules
+services:
+  - mysql
+# before_install:
+#   - mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS gamefolder_db;"
+install:
+- npm install
+script:
+- npm test
