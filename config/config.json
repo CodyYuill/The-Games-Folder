@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "Ifeoluwa2.",
-    "database": "login_db",
+    "password": "password",
+    "database": "gamefolder_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
