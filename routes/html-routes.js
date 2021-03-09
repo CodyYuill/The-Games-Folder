@@ -1,5 +1,9 @@
+const { requireAuth, checkUser } = require("../config/middleware/isAuthenticated.js");
+
 module.exports = function (app) {
-    app.get("/", (req, res) => {
+
+    app.get("*", checkUser);
+    app.get("/", requireAuth,(req, res) => {
         res.render("filetoname");
     });
 
@@ -14,5 +18,8 @@ module.exports = function (app) {
 
     
 
-    app.get("/logout", (req, res) => {});
+    app.get("/logout", (req, res) => {
+        res.cookie("jwt", "", {maxAge: 1});
+        res.redirect("/");
+    });
 };

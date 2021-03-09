@@ -24,11 +24,29 @@ module.exports = function(sequelize, DataTypes) {
           msg: "please enter at least 6 characters"
         }
       }
-    }
-  });
+    },
+  } 
+);
+
+User.prototype.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.password);
+};
 
   User.addHook("beforeCreate", function(user) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
   return User;
 };
+
+
+// module.exports.login = async function(email, password) {
+
+//   const user = await this.findOne({ email });
+//   if(user){
+//     const auth = bcrypt.compareSync(password, this.password);
+//     if(auth) {
+//       return user;
+//     } throw Error("incorrect password");
+//   }throw Error("incorrect email");
+//  // return bcrypt.compareSync(password, this.password);
+// };
