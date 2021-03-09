@@ -26,7 +26,7 @@
 				<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="container-fluid">
 
-						<a class="navbar-brand position-absolute top-50 start-50 translate-middle" href="#"><h2>Gaming Review Hub</h2></a>
+						<a class="navbar-brand position-absolute top-50 start-50 translate-middle" href="#"><h2>Gaming</h2></a>
 						<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 							data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 							aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +37,12 @@
 							</ul>
 							<form class="d-flex">
 
-								<button class="btn btn-danger" type="submit">Login/signin</button>
+								<button class="btn btn-danger" type="submit"><a href="/logout">Logout</a></button>
+								<button class="btn btn-danger" type="submit"><a href="/login">Login</a></button>
+								<button class="btn btn-danger" type="submit"><a href="/signup">Signup</a></button>
+								{{#if user}}
+								<p>Welcome {{ user.dataValues.email}}</p>
+								{{/if}}
 							</form>
 						</div>
 					</div>
