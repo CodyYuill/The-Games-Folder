@@ -28,6 +28,15 @@ module.exports = function(sequelize, DataTypes) {
   } 
 );
 
+  //to link reviews
+  User.associate = function(models) {
+    // Associating Review with Posts
+    // When an Review is deleted, also delete any associated Posts
+    User.hasMany(models.Review, {
+        onDelete: "cascade"
+    });
+  };
+
 User.prototype.validPassword = function(password) {
   return bcrypt.compareSync(password, this.password);
 };

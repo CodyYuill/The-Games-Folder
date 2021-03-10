@@ -7,8 +7,7 @@
 
     <div class="row">
       <div class="col-lg-6">
-          <img id="gameImg" src={{theirData.background_image}}
-                alt="First slide" class="img-fluid">
+          <img id="gameImg" src={{theirData.background_image}} alt="Game image" class="img-fluid">
         
       </div>
 
@@ -19,28 +18,16 @@
 
         <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
           <span class="red-text font-weight-bold">
-            <strong>$1449</strong>
-          </span>
-          <span class="grey-text">
-            <small>
-              <s>$1789</s>
-            </small>
+            <strong>$50</strong>
           </span>
         </h3>
 
         <div class="font-weight-normal">
           
           <p class="ml-xl-0 ml-4"></p>{{theirData.description_raw}}</p>
-
           <p class="ml-xl-0 ml-4">{{ourData.platforms}}</p>
           <p class="ml-xl-0 ml-4">{{ourData.genres}}</p>
           <p class="ml-xl-0 ml-4">ESRB Rating: {{theirData.esrb_rating.name}}</p>
-          {{!-- if inventory > 0 disply in stock else display out of stock --}}
-          {{!-- {{#if author}}
-<h1>{{firstName}} {{lastName}}</h1>
-{{else}}
-<h1>Unknown Author</h1>
-{{/if}} --}}
           <p class="ml-xl-0 ml-4"><strong>Availability: </strong>{{#ifCond ourData.inventory '>' 0}}In stock</p>{{else}} Out of stock</p>{{/ifCond}}       
 
         </div>
@@ -49,7 +36,27 @@
     </div>
 
   </section>
+ 
+</div>
+
+<div class="container my-5 py-5 z-depth-1">
+
   <!--Section: Content-->
+  <section>
+    {{#if ourData.Reviews}}
+      <ul>
+        {{#each ourData.Reviews}}
+        <li class="reviewLi" style="list-style-type:none;">
+          <p class="ml-xl-0 ml-4">{{dataValues.User.dataValues.email}}</p>
+          <p class="ml-xl-0 ml-4">{{dataValues.body}}</p>
+          <p class="ml-xl-0 ml-4">{{dataValues.rating}}</p>
+        </li>
+        {{/each}}
+      </ul>
+    {{else}}
+    <p class="ml-xl-0 ml-4">No reviews yet</p>
+    {{/if}}
+  </section>
 
 
 </div>

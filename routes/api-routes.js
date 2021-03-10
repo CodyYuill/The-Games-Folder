@@ -103,14 +103,19 @@ module.exports = function(app) {
                     [Op.like]: `%${req.params.game}%`
                 }
             },
-            include: [db.Review]
+            include: {
+                model: db.Review, 
+                include: {
+                    model: db.User
+                }
+            }
+            //include: [db.Review]
         }).then(function(result){
-            // console.log(result);
+            console.log(result.dataValues.Reviews[0].dataValues.User.dataValues.email);
             var ourData = result.dataValues;
             //grab rest of info thats we arent storing in the database from RAWG
             axios.get(`https://api.rawg.io/api/games/${ourData.game_slug}`).then(function(results2){
                 console.log("made call to RAWG for additional info");
-                //console.log(results2.data);
                 var theirData = results2.data;
                 res.render("product", {ourData, theirData});
             });
