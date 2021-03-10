@@ -14,6 +14,8 @@ $(document).ready(() => {
         fetch(`/api/games/${gameToSearch}`).then(function(result){
             console.log(result);
             window.location.href = result.url;
+        }).catch(function(err){
+            console.log(err);
         });
 
     });
@@ -36,7 +38,7 @@ $(document).ready(() => {
     });
 
     function disableEnableReviewPosting(){
-        console.log($("currentUserInfo").html());
+        //console.log($("currentUserInfo").html());
         if($("#currentUserInfo").html()){
             postBtn.prop("disabled", false);
             reviewBody.prop("disabled", false);

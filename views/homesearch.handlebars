@@ -7,11 +7,14 @@
                 <input id="gameSearch" type="text" class="form-control" placeholder="Search for...">
                 <span class="input-group-btn">
                   <a id="searchBtn"  class="btn btn-secondary">GO!</a>
-                  {{!-- <a id="searchBtn"  class="btn btn-secondary">GO!</a> --}}
                 </span>
             </div>
+            {{#if errorMsg}}
+                <p>{{errorMsg}}</p>
+            {{/if}}
         </div>
     </div>
+
 
     <footer class="footer fixed-bottom text-center">
         <span> <img

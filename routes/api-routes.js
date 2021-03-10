@@ -97,10 +97,14 @@ module.exports = function(app) {
     });
 
     app.get("/api/games/:game", (req, res) => {
+        var searchFor = " ";
+        var replaceWith = "-";
+        var gameToSearch = req.params.game.split(searchFor).join(replaceWith);
+        console.log(gameToSearch);
         db.Game.findOne({
             where:{
                 game_slug: {
-                    [Op.like]: `%${req.params.game}%`
+                    [Op.like]: `%${gameToSearch}%`
                 }
             },
             include: {
@@ -118,6 +122,9 @@ module.exports = function(app) {
                 var theirData = results2.data;
                 res.render("product", {ourData, theirData});
             });
+        }).catch(function(err){
+            var errorMsg = "Uh-Oh we couldn't find you're looking for";
+            res.render("homesearch", {errorMsg});
         });
     });
 
