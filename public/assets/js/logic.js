@@ -4,6 +4,8 @@ $(document).ready(() => {
     // search input field
     let gameSearch = $("#gameSearch");
 
+    let buyBtn = $("#buyBtn");
+
     let postReview = $("#reviewPost");
     let reviewBody = $("#reviewBody");
     let postBtn = $("#postBtn");
@@ -37,20 +39,38 @@ $(document).ready(() => {
         }
     });
 
-    function disableEnableReviewPosting(){
+    buyBtn.on("click", function(){
+        $.ajax({
+            method: "PUT",
+            url: "/buy-game",
+            data: {
+                inventory: (parseInt($("#inventory").html()) - 1),
+                id: reviewBody.data("gameid")
+            }
+        }).then(function(result){
+            console.log(result);
+            location.reload();
+        });
+    });
+
+    function disableEnableSigninRequiredActions(){
         //console.log($("currentUserInfo").html());
         if($("#currentUserInfo").html()){
             postBtn.prop("disabled", false);
             reviewBody.prop("disabled", false);
             reviewBody.attr("placeholder", "Leave a review...");
+            buyBtn.prop("disabled", false);
+            buyBtn.html("Buy");
         } else{
             postBtn.prop("disabled", true);
             reviewBody.prop("disabled", true);
             reviewBody.attr("placeholder", "Please sign in to leave a review");
+            buyBtn.prop("disabled", true);
+            buyBtn.html("Please sign in to purchase items");
         }
     }
 
-    disableEnableReviewPosting();
+    disableEnableSigninRequiredActions();
 
 
 });

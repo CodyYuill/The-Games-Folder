@@ -28,13 +28,18 @@
           <p class="ml-xl-0 ml-4">{{ourData.platforms}}</p>
           <p class="ml-xl-0 ml-4">{{ourData.genres}}</p>
           <p class="ml-xl-0 ml-4">ESRB Rating: {{theirData.esrb_rating.name}}</p>
-          <p class="ml-xl-0 ml-4"><strong>Availability: </strong>{{#ifCond ourData.inventory '>' 0}}In stock</p>{{else}} Out of stock</p>{{/ifCond}}       
+          <p class="ml-xl-0 ml-4">
+          {{#ifCond ourData.inventory '>' 0}}
+            <p id="inventory">{{ourData.inventory}} Available</p>
+          <button id="buyBtn" class="btn btn-secondary">Buy</button>  
+          {{else}} 
+            Out of stock</p>
+          {{/ifCond}}       
 
         </div>
 
       </div>
     </div>
-
   </section>
  
 </div>

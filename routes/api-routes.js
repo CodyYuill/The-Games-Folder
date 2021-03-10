@@ -152,6 +152,16 @@ module.exports = function(app) {
         });
     });
 
+    app.put("/buy-game", function(req, res){
+        db.Game.update({inventory: req.body.inventory},{
+            where:{
+                id: req.body.id
+            }
+        }).then(function(result){
+            res.json(result);
+        });
+    });
+
     //REVIEW ROUTES
     app.post("/api/add-review", (req, res) => {
         db.Review.create(req.body).then(function(result){
