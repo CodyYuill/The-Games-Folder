@@ -41,7 +41,7 @@
 								<button class="btn btn-danger" type="submit"><a href="/login">Login</a></button>
 								<button class="btn btn-danger" type="submit"><a href="/signup">Signup</a></button>
 								{{#if user}}
-								<p>Welcome {{ user.dataValues.email}}</p>
+								<p id="currentUserInfo" data-userid="{{user.dataValues.id}}">Welcome {{ user.dataValues.email}}</p>
 								{{/if}}
 							</form>
 						</div>

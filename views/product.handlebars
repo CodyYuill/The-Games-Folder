@@ -43,6 +43,12 @@
 
   <!--Section: Content-->
   <section>
+    <form class="input-group" id="reviewPost">
+      <input id="reviewBody" data-gameid="{{ourData.id}}" type="text" class="form-control" placeholder="Leave a review...">
+      <span class="input-group-btn">
+        <input id="postBtn"  class="btn btn-secondary" type="submit"></input>
+      </span>
+    </form>
     {{#if ourData.Reviews}}
       <ul>
         {{#each ourData.Reviews}}
