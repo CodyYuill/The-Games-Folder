@@ -4,16 +4,9 @@ module.exports = function (app) {
 
     app.get("*", checkUser);
     app.get("/", (req, res) => {
-        res.render("filetoname");
+        res.render("homesearch");
     });
 
-    // app.get("/", (req, res) => {
-    //     res.render("filetoname");
-    // });
-
-  app.get("/product", (req, res) => {
-    res.render('product')
-  });
 
     app.get("/signup", (req, res) => {
         res.render("signup");

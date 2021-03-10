@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
+    "password": "Codysql3!3",
     "database": "gamefolder_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
