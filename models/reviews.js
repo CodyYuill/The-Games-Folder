@@ -17,11 +17,16 @@ module.exports = function(sequelize, DataTypes) {
             }
         }
     });
-    //to link games
+    //to link games and users
     Review.associate = function(models) {
         // We're saying that a Review should belong to an Game
         // A Review can't be created without a Game due to the foreign key constraint
         Review.belongsTo(models.Game, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+        Review.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false
             }

@@ -56,5 +56,9 @@ img.resize {
     height:160px; 
 }
 
+reviewLi{
+    list-style-type:none;
+}
+
 
 

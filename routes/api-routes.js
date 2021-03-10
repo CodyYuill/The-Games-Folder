@@ -97,23 +97,34 @@ module.exports = function(app) {
     });
 
     app.get("/api/games/:game", (req, res) => {
+        var searchFor = " ";
+        var replaceWith = "-";
+        var gameToSearch = req.params.game.split(searchFor).join(replaceWith);
+        console.log(gameToSearch);
         db.Game.findOne({
             where:{
                 game_slug: {
-                    [Op.like]: `%${req.params.game}%`
+                    [Op.like]: `%${gameToSearch}%`
                 }
             },
-            include: [db.Review]
+            include: {
+                model: db.Review, 
+                include: {
+                    model: db.User
+                }
+            }
         }).then(function(result){
-            // console.log(result);
+            //console.log(result.dataValues.Reviews[0]);
             var ourData = result.dataValues;
             //grab rest of info thats we arent storing in the database from RAWG
             axios.get(`https://api.rawg.io/api/games/${ourData.game_slug}`).then(function(results2){
                 console.log("made call to RAWG for additional info");
-                //console.log(results2.data);
                 var theirData = results2.data;
                 res.render("product", {ourData, theirData});
             });
+        }).catch(function(err){
+            var errorMsg = "Uh-Oh we couldn't find you're looking for";
+            res.render("homesearch", {errorMsg});
         });
     });
 
@@ -135,6 +146,16 @@ module.exports = function(app) {
                 genre_slug: {
                     [Op.like]: `%${req.params.genre}`
                 }
+            }
+        }).then(function(result){
+            res.json(result);
+        });
+    });
+
+    app.put("/buy-game", function(req, res){
+        db.Game.update({inventory: req.body.inventory},{
+            where:{
+                id: req.body.id
             }
         }).then(function(result){
             res.json(result);
