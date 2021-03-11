@@ -91,8 +91,14 @@ module.exports = function(app) {
         });
     //GAMES ROUTES
     app.get("/api/all-games", (req, res) => {
-        db.Game.findAll({}).then(function(result){
-            res.json(result);
+        db.Game.findAll({
+            order: [
+                ["name", "ASC"]
+            ]
+        }).then(function(result){
+            var ourData = result;
+            console.log(ourData);
+            res.render("results", {ourData});
         });
     });
 
@@ -100,6 +106,32 @@ module.exports = function(app) {
         var searchFor = " ";
         var replaceWith = "-";
         var gameToSearch = req.params.game.split(searchFor).join(replaceWith);
+        console.log(gameToSearch);
+        db.Game.findAll({
+            where:{
+                game_slug: {
+                    [Op.like]: `%${gameToSearch}%`
+                }
+            },
+            include: {
+                model: db.Review, 
+                include: {
+                    model: db.User
+                }
+            },
+            order: [
+                ["name", "ASC"]
+            ]
+        }).then(function(result){
+            //console.log(result.dataValues.Reviews[0]);
+            var ourData = result;
+            console.log(ourData);
+            res.render("results", {ourData});
+        });
+    });
+
+    app.get("/api/game/:game", (req, res) => {
+        var gameToSearch = req.params.game;
         console.log(gameToSearch);
         db.Game.findOne({
             where:{
@@ -122,9 +154,6 @@ module.exports = function(app) {
                 var theirData = results2.data;
                 res.render("product", {ourData, theirData});
             });
-        }).catch(function(err){
-            var errorMsg = "Uh-Oh we couldn't find you're looking for";
-            res.render("homesearch", {errorMsg});
         });
     });
 
@@ -134,9 +163,14 @@ module.exports = function(app) {
                 platform_slug: {
                     [Op.like]: `%${req.params.platform}%`
                 }
-            }
+            },
+            order: [
+                ["name", "ASC"]
+            ]
         }).then(function(result){
-            res.json(result);
+            var ourData = result;
+            console.log(ourData);
+            res.render("results", {ourData});
         });
     });
 
@@ -146,9 +180,14 @@ module.exports = function(app) {
                 genre_slug: {
                     [Op.like]: `%${req.params.genre}`
                 }
-            }
+            },
+            order: [
+                ["name", "ASC"]
+            ]
         }).then(function(result){
-            res.json(result);
+            var ourData = result;
+            console.log(ourData);
+            res.render("results", {ourData});
         });
     });
 
