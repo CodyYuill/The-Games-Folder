@@ -1,4 +1,9 @@
 $(document).ready(() => {
+    let allGames = $("#allGames");
+    let platformSearch = $(".platformSearch");
+    let genreSearch = $(".genreSearch");
+    let singleSearch = $(".singleSearch");
+
     let searchBtn = $("#searchBtn");
 
     // search input field
@@ -10,6 +15,13 @@ $(document).ready(() => {
     let reviewBody = $("#reviewBody");
     let postBtn = $("#postBtn");
 
+
+    allGames.on("click", function(){
+        fetch("/api/all-games").then(function(result){
+            console.log(result);
+            window.location.href = result.url;
+        });
+    });
 
     searchBtn.on("click", function(){
         var gameToSearch = gameSearch.val();
@@ -50,6 +62,30 @@ $(document).ready(() => {
         }).then(function(result){
             console.log(result);
             location.reload();
+        });
+    });
+
+    platformSearch.on("click", function(){
+        console.log($(this).data("slug"));
+        fetch(`/api/platforms/${$(this).data("slug")}`).then(function(result){
+            console.log(result);
+            window.location.href = result.url;
+        });
+    });
+
+    genreSearch.on("click", function(){
+        console.log($(this).data("slug"));
+        fetch(`/api/genres/${$(this).data("slug")}`).then(function(result){
+            console.log(result);
+            window.location.href = result.url;
+        });
+    });
+
+    singleSearch.on("click", function(){
+        console.log($(this).data("slug"));
+        fetch(`/api/game/${$(this).data("slug")}`).then(function(result){
+            console.log(result);
+            window.location.href = result.url;
         });
     });
 

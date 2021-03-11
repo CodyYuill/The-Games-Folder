@@ -18,15 +18,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="col"><img class="resize center"
-					src="https://raw.githubusercontent.com/Michaelwall8/first-repository/main/logo.jpg" alt=""> </div>
+					src="https://raw.githubusercontent.com/Michaelwall8/first-repository/main/logo.jpg" alt="">
+			</div>
 
 		</div>
 		<div class="row">
 			<div class="col">
+				{{!-- signin stuff --}}
 				<nav class="navbar navbar-expand-lg navbar-light">
 					<div class="container-fluid">
 
-						<a class="navbar-brand position-absolute top-50 start-50 translate-middle" href="#"><h2>Gaming</h2></a>
 						<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 							data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 							aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +42,7 @@
 								<button class="btn btn-danger" type="submit"><a href="/login">Login</a></button>
 								<button class="btn btn-danger" type="submit"><a href="/signup">Signup</a></button>
 								{{#if user}}
-								<p id="currentUserInfo" data-userid="{{user.dataValues.id}}">Welcome {{ user.dataValues.email}}</p>
+								<p id="currentUserInfo" data-userid="{{user.dataValues.id}}">Welcome {{user.dataValues.email}}</p>
 								{{/if}}
 							</form>
 						</div>
@@ -50,7 +51,8 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					{{!-- filter stuff --}}
+					<nav class="navbar navbar-expand-lg navbar-light bg-light" style="position:relative; z-index:100;">
 						<div class="container-fluid">
 							<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 								data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -60,71 +62,96 @@
 							<div class="collapse navbar-collapse position-absolute top-50 start-50 translate-middle"
 								id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-										{{!-- <div class="btn-group">
-										<button class="btn btn-secondary btn-lg dropdown-toggle" type="button"
-											data-bs-toggle="dropdown" aria-expanded="false">
-											Large button --}}
-										{{!-- </button> --}}
-									<li class="nav-item">
-										<a class="nav-link active" aria-current="page" href="#">All Games</a>
-									</li>
-
-									<li class="nav-item dropdown">
-										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-											data-bs-toggle="dropdown" aria-expanded="false">
-											Consoles
-										</a>
-										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-											<li><a class="dropdown-item" href="#">Action</a></li>
-											<li><a class="dropdown-item" href="#">Another action</a></li>
-											<li>
-												<hr class="dropdown-divider">
-											</li>
-											<li><a class="dropdown-item" href="#">Something else here</a></li>
-										</ul>
-									</li>
-
-									<li class="nav-item dropdown">
-										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-											data-bs-toggle="dropdown" aria-expanded="false">
-											Genres
-										</a>
-										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-											<li><a class="dropdown-item" href="#">Action</a></li>
-											<li><a class="dropdown-item" href="#">Another action</a></li>
-											<li>
-												<hr class="dropdown-divider">
-											</li>
-											<li><a class="dropdown-item" href="#">Something else here</a></li>
-										</ul>
-									</li>
-									<li class="nav-item dropdown">
-										<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-											data-bs-toggle="dropdown" aria-expanded="false">
-											Dropdown
-										</a>
-										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-											<li><a class="dropdown-item" href="#">Action</a></li>
-											<li><a class="dropdown-item" href="#">Another action</a></li>
-											<li>
-												<hr class="dropdown-divider">
-											</li>
-											<li><a class="dropdown-item" href="#">Something else here</a></li>
-										</ul>
-									</li>
 									{{!-- <div class="btn-group">
 										<button class="btn btn-secondary btn-lg dropdown-toggle" type="button"
 											data-bs-toggle="dropdown" aria-expanded="false">
-											Large button
-										</button> --}}
-										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-											<li><a class="dropdown-item" href="#">Action</a></li>
-											<li><a class="dropdown-item" href="#">Another action</a></li>
-											<li>
-												<hr class="dropdown-divider">
-											</li>
-											<li><a class="dropdown-item" href="#">Something else here</a></li>
-										</ul>
+											Large button --}}
+											{{!-- </button> --}}
+										<li class="nav-item">
+											<a id="allGames" class="nav-link active" aria-current="page">All Games</a>
+										</li>
+
+										<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+												role="button" data-bs-toggle="dropdown" aria-expanded="false">
+												Consoles
+											</a>
+											<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+												<li><a id="yup" class = "dropdown-item platformSearch" data-slug = "android">Android</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "apple-ii">Apple II</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "macintosh">Classic Macintosh</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "commodore-amiga">Commodore / Amiga</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "dreamcast">Dreamcast</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "game-boy-advance">Game Boy Advance</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "game-boy-color">Game Boy Color</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "game-boy">Game Boy</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "gameCube">GameCube</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "ios">iOS</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "linux">Linux</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "macos">macOS</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "neogeo">Neo Geo</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "nintendo-3ds">Nintendo 3DS</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "nintendo-64">Nintendo 64</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "nintendo-ds">Nintendo DS</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "nintendo-dsi">Nintendo DSi</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "nintendo-switch">Nintendo Switch</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "pc">PC</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "playstation2">PlayStation 2</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "playstation3">PlayStation 3</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "playstation4">PlayStation 4</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "playstation5">PlayStation 5</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "playstation1">PlayStation</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "ps-vita">PS Vita</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "psp">PSP</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "sega-cd">SEGA CD</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "sega-saturn">SEGA Saturn</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "web">Web</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "wii">Wii</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "wii-u">Wii U</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "xbox360">Xbox 360</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "xbox-one">Xbox One</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "xbox-series-x">Xbox Series S/X</a></li>
+												<li><a class = "dropdown-item platformSearch" data-slug = "xbox-old">Xbox</a></li>
+
+											</ul>
+										</li>
+
+										<li class="nav-item dropdown">
+											<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+												role="button" data-bs-toggle="dropdown" aria-expanded="false">
+												Genres
+											</a>
+											<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+												<li><a class="dropdown-item genreSearch" data-slug="action">Action</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="adventure">Adventure</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="arcade">Arcade</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="board-games">Board Games</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="card">Card</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="casual">Casual</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="educational">Educational</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="family">Family</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="fighting">Fighting</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="indie">Indie</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="massively-multiplayer">Massively Multiplayer</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="platformer">Platformer</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="puzzle">Puzzle</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="racing">Racing</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="racing">Racing</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="role-playing-games-rpg">RPG</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="shooter">Shooter</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="simulation">Simulation</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="sports">Sports</a></li>
+												<li><a class="dropdown-item genreSearch" data-slug="strategy">Strategy</a></li>
+
+											</ul>
+										</li>
+
+										{{!-- <div class="btn-group">
+											<button class="btn btn-secondary btn-lg dropdown-toggle" type="button"
+												data-bs-toggle="dropdown" aria-expanded="false">
+												Large button
+											</button> --}}
+
 								</ul>
 
 								</ul>
@@ -153,7 +180,7 @@
 
 	<script src="/assets/js/logic.js"></script>
 	<!-- JavaScript Bundle with Popper -->
-	</div>
+
 	{{!-- <div class="footer-bottom">
 		<p>copyright</p>
 	</div> --}}
