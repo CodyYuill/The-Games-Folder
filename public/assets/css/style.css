@@ -52,12 +52,16 @@
 
 
 img.resize {
-    width: 400px;
-    height:160px; 
+    width: 350px;
+    height:240px; 
 }
 
 .reviewLi{
     list-style-type: none;
+}
+
+#gameImg, #reviewPost{
+    margin-bottom: 15px;
 }
 
 .content{
@@ -72,5 +76,27 @@ img.resize {
 
 .sticky + .content {
     padding-top: 60px;
+}
+
+.gametitle{
+    margin-bottom: 30px !important;
+    font-size: 55px;
+}
+
+#priceTag{
+    font-size: 25px;
+}
+
+#reviewRating{
+    color: #ffcc00;
+    -webkit-text-stroke: 1px rgb(150, 150, 150);
+    font-size: 23px;
+    float: left;
+    margin-right: 13px;
+    margin-left: 10px;
+}
+
+#reviewBody{
+    font-size: 17px;
 }
 

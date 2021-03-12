@@ -39,10 +39,11 @@ $(document).ready(() => {
 
     postReview.on("submit", function(e){
         e.preventDefault();
+        console.log($("#inputGroupSelect01").val());
         if($("#currentUserInfo")){
             var newReview = {
                 body: reviewBody.val().trim(),
-                rating: 5,
+                rating: $("#inputGroupSelect01").val(),
                 GameId: reviewBody.data("gameid"),
                 UserId: $("#currentUserInfo").data("userid")
             };

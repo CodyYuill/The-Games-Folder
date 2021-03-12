@@ -1,37 +1,28 @@
 <div class="container my-5 py-5 z-depth-1">
 
-
   <!--Section: Content-->
-  <section class="text-center">
-      <h2 class="h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4">{{ourData.name}}</h2>
+  <section>
+      <h2 class="h2-responsive text-center text-md-left product-name font-weight-bold red-text mb-1 ml-xl-0 ml-4 gametitle">{{ourData.name}}</h2>
 
     <div class="row">
       <div class="col-lg-6">
-          <img id="gameImg" src={{theirData.background_image}} alt="Game image" class="img-fluid">
+        <img id="gameImg" src={{theirData.background_image}} alt="Game image" class="img-fluid">
         
       </div>
 
-      <div class="col-lg-5 text-center text-md-left">
+      <div class="col-lg-5">
+        <div class="font-weight-normal">          
+          <span class="ml-xl-0 ml-4"></span>{{theirData.description_raw}}</p>
+          <p class="ml-xl-0 ml-4 text-center">{{ourData.platforms}}</p>
+          <p class="ml-xl-0 ml-4 text-center">{{ourData.genres}}</p>
+          <p class="ml-xl-0 ml-4 text-center">ESRB Rating: {{theirData.esrb_rating.name}}</p>
 
-        {{!-- <span class="badge badge-danger product mb-4 ml-xl-0 ml-4">tags</span>
-        <span class="badge badge-success product mb-4 ml-2">tags</span> --}}
-
-        <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
-          <span class="red-text font-weight-bold">
-            <strong>$50</strong>
-          </span>
-        </h3>
-
-        <div class="font-weight-normal">
-          
-          <p class="ml-xl-0 ml-4"></p>{{theirData.description_raw}}</p>
-          <p class="ml-xl-0 ml-4">{{ourData.platforms}}</p>
-          <p class="ml-xl-0 ml-4">{{ourData.genres}}</p>
-          <p class="ml-xl-0 ml-4">ESRB Rating: {{theirData.esrb_rating.name}}</p>
-          <p class="ml-xl-0 ml-4">
+          <p id="priceTag" class="text-center text-md-left red-text">$50</p>
           {{#ifCond ourData.inventory '>' 0}}
+          <div  class="text-center">
             <p id="inventory">{{ourData.inventory}} Available</p>
-          <button id="buyBtn" class="btn btn-secondary">Buy</button>  
+            <button id="buyBtn" class="btn btn-secondary">Buy</button>  
+          </div>
           {{else}} 
             Out of stock</p>
           {{/ifCond}}       
@@ -50,17 +41,31 @@
   <section>
     <form class="input-group" id="reviewPost">
       <input id="reviewBody" data-gameid="{{ourData.id}}" type="text" class="form-control" placeholder="Leave a review...">
+        <select class="custom-select" id="inputGroupSelect01">
+          <option>Rating</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+       </select>
+       </input>
       <span class="input-group-btn">
         <input id="postBtn"  class="btn btn-secondary" type="submit"></input>
       </span>
     </form>
     {{#if ourData.Reviews}}
-      <ul>
+      <ul class="list-group">
         {{#each ourData.Reviews}}
-        <li class="reviewLi">
+        <li class="reviewLi list-group-item">
           <p class="ml-xl-0 ml-4">{{dataValues.User.dataValues.email}}</p>
-          <p class="ml-xl-0 ml-4">{{dataValues.body}}</p>
-          <p class="ml-xl-0 ml-4">{{dataValues.rating}}</p>
+          <p id="reviewRating" class="ml-xl-0 ml-4">{{dataValues.rating}}/10</p>
+          <p id="reviewBody" class="ml-xl-0 ml-4">{{dataValues.body}}</p>
         </li>
         {{/each}}
       </ul>
