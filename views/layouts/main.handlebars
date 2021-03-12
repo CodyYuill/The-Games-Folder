@@ -135,9 +135,12 @@
 
 								</ul>
 								<ul class="navbar-nav navbar-right">
-									<li class="nav-item navbar-right"><button class="btn btn-danger"><a href="/logout">Logout</a></button></li>
-									<li class="nav-item navbar-right"><button class="btn btn-danger"><a href="/login">Login</a>  </button></li>
-									<li class="nav-item navbar-right"><button class="btn btn-danger"><a href="/signup">Signup</a></button></li>
+									{{#if user}}
+										<li class="nav-item navbar-right"><button class="btn btn-danger"><a href="/logout">Logout</a></button></li>
+									{{else}}
+										<li class="nav-item navbar-right"><button class="btn btn-danger"><a href="/login">Login</a>  </button></li>
+										<li class="nav-item navbar-right"><button class="btn btn-danger"><a href="/signup">Signup</a></button></li>
+									{{/if}}
 									{{#if user}}
 									<li class="nav-item navbar-right"><p class="btn btn-danger" id="currentUserInfo" data-userid="{{user.dataValues.id}}">Welcome {{user.dataValues.email}}</p></li>
 									{{/if}}
