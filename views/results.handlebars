@@ -12,23 +12,15 @@
         <!-- Card -->
         <div class="card hoverable mb-4">
           <div class="card-body">
-            <div class="row align-items-center">
-              {{!-- <div class="col-6 px-0">
-                <a>
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/1.jpg"
-                    class="img-fluid">
-                </a>
-              </div> --}}
-              <div class="col-6">
-                <a class="singleSearch" data-slug={{dataValues.game_slug}}>
-                  <strong>{{dataValues.name}}</strong>
-                </a>
+            <div class="row">
+              <div class="col-12">                
                 <ul class="rating inline-ul">
-                  <li style="list-style-type:none;">
-                    <p class="fas fa-star blue-text">{{dataValues.platforms}}</p>
+                  <li class="reviewLi"><p class="red-text" style="font-size: 30px;"><a class="singleSearch" data-slug={{dataValues.game_slug}}>{{dataValues.name}}</a></p></li>
+                  <li class="reviewLi">
+                    <p class="fas fa-star">{{dataValues.platforms}}</p>
                   </li>
-                  <li style="list-style-type:none;">
-                    <p class="fas fa-star blue-text">{{dataValues.genres}}</p>
+                  <li class="reviewLi">
+                    <p class="fas fa-star">{{dataValues.genres}}</p>
                 </ul>
               </div>
             </div>

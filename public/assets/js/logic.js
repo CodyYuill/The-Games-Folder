@@ -15,6 +15,9 @@ $(document).ready(() => {
     let reviewBody = $("#reviewBody");
     let postBtn = $("#postBtn");
 
+    let navbar = $("#navBar");
+    let offset = navbar.offset();
+
 
     allGames.on("click", function(){
         fetch("/api/all-games").then(function(result){
@@ -106,8 +109,18 @@ $(document).ready(() => {
         }
     }
 
-    disableEnableSigninRequiredActions();
+    function stickNavbarToTop(){
+        if(window.pageYOffset >= offset.top){
+            navbar.addClass("sticky");
+        }else{
+            navbar.removeClass("sticky");
+        }
+    }
 
+    disableEnableSigninRequiredActions();
+    window.onscroll = function() {
+        stickNavbarToTop();
+    };
 
 });
 

@@ -56,9 +56,21 @@ img.resize {
     height:160px; 
 }
 
-reviewLi{
-    list-style-type:none;
+.reviewLi{
+    list-style-type: none;
 }
 
+.content{
+    padding: 16px;
+}
 
+.sticky{
+    position: fixed !important;
+    top: 0 !important;
+    width: 100% !important;
+}
+
+.sticky + .content {
+    padding-top: 60px;
+}
 
