@@ -60,7 +60,7 @@ img.resize {
     list-style-type: none;
 }
 
-#gameImg{
+#gameImg, #reviewPost{
     margin-bottom: 15px;
 }
 
