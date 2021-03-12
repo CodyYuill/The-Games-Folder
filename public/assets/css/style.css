@@ -60,6 +60,10 @@ img.resize {
     list-style-type: none;
 }
 
+#gameImg{
+    margin-bottom: 15px;
+}
+
 .content{
     padding: 16px;
 }
