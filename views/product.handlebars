@@ -41,6 +41,20 @@
   <section>
     <form class="input-group" id="reviewPost">
       <input id="reviewBody" data-gameid="{{ourData.id}}" type="text" class="form-control" placeholder="Leave a review...">
+        <select class="custom-select" id="inputGroupSelect01">
+          <option>Rating</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+       </select>
+       </input>
       <span class="input-group-btn">
         <input id="postBtn"  class="btn btn-secondary" type="submit"></input>
       </span>
@@ -50,8 +64,8 @@
         {{#each ourData.Reviews}}
         <li class="reviewLi list-group-item">
           <p class="ml-xl-0 ml-4">{{dataValues.User.dataValues.email}}</p>
-          <p class="ml-xl-0 ml-4">{{dataValues.body}}</p>
-          <p class="ml-xl-0 ml-4">{{dataValues.rating}}</p>
+          <p id="reviewRating" class="ml-xl-0 ml-4">{{dataValues.rating}}/10</p>
+          <p id="reviewBody" class="ml-xl-0 ml-4">{{dataValues.body}}</p>
         </li>
         {{/each}}
       </ul>

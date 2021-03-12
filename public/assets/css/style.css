@@ -87,3 +87,16 @@ img.resize {
     font-size: 25px;
 }
 
+#reviewRating{
+    color: #ffcc00;
+    -webkit-text-stroke: 1px rgb(150, 150, 150);
+    font-size: 23px;
+    float: left;
+    margin-right: 13px;
+    margin-left: 10px;
+}
+
+#reviewBody{
+    font-size: 17px;
+}
+
